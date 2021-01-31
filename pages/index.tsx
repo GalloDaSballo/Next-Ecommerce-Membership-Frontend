@@ -1,46 +1,41 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
-import Signup from "../components/Signup";
+import APIServerClient from "../api/APIServerClient";
+import { Product, Products } from "../api/interfaces";
 import styles from "../styles/Index.module.scss";
 
-export const Home = (): JSX.Element => {
+export const HomePage = ({ products }: { products: Products }): JSX.Element => {
     return (
         <div className={styles.container}>
             <Head>
-                <title>Create Next App</title>
+                <title>Entreprenerd Store</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <h1 className={styles.title}>
-                    Welcome to{" "}
-                    <a href="https://nextjs.org">Next.js with Magic!</a>
-                </h1>
-                <p className={styles.description}>
-                    Edit the login tool by editing{" "}
-                    <code>components/Signup</code>
-                </p>
-                <Signup />
-                <p className={styles.description}>
-                    Get started by editing <code>pages/index.tsx</code>
-                </p>
-            </main>
-
-            <footer>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{" "}
-                    <img
-                        src="/vercel.svg"
-                        alt="Vercel Logo"
-                        className={styles.logo}
-                    />
-                </a>
-            </footer>
+            <h2>Purchase Products here</h2>
+            {products.map((product: Product) => (
+                <h2 key={product.name}>{product.name}</h2>
+            ))}
+            <p>Do single product page (static)</p>
+            <p>In page, have button with authenticated request</p>
+            <p>
+                If product is available it will show download, then show
+                download
+            </p>
+            <p>Else show buy (Stripe Checkout flow)</p>
+            <p>
+                Orders page should show list of products the user can purchase
+            </p>
         </div>
     );
 };
 
-export default Home;
+export default HomePage;
+
+export const getStaticProps: GetStaticProps = async () => {
+    return APIServerClient.fetchProducts().then(({ data }) => ({
+        props: {
+            products: data,
+        },
+    }));
+};
