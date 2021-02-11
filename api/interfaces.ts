@@ -13,3 +13,8 @@ export interface Product {
 }
 
 export type Products = Product[];
+
+export interface Order {
+    status: string;
+    product: Product;
+}
