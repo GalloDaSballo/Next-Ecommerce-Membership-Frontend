@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useUser } from "../../context/UserContext";
 import styles from "./Header.module.scss";
 
-const Header = () => {
+const Header: React.FC = () => {
     const router = useRouter();
     const isHome = router.pathname === "/";
     const user = useUser();

@@ -1,7 +1,7 @@
-const AccountPage = () => {
+const AccountPage: React.FC = () => {
     return (
         <div>
-            <h2>Accoutn</h2>
+            <h2>Account</h2>
         </div>
     );
 };

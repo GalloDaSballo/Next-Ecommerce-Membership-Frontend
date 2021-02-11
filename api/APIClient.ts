@@ -15,6 +15,13 @@ class APIClient {
         });
     }
 
+    public fetchProduct(slug: string): Promise<AxiosResponse<Products>> {
+        return this.axios({
+            method: "GET",
+            url: `/membership-light/products/?slug=${slug}`,
+        });
+    }
+
     public fetchMyProducts(
         authToken: string,
     ): Promise<AxiosResponse<Products>> {

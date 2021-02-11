@@ -3,7 +3,7 @@ import { useUser, useLogin, useLogout } from "../../context/UserContext";
 
 import styles from "./Signup.module.scss";
 
-const Signup = (): JSX.Element => {
+const Signup: React.FC = () => {
     const user = useUser();
     const logout = useLogout();
     const [email, setEmail] = useState("");

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Signup from "../components/Signup";
 import { useUser } from "../context/UserContext";
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
     const user = useUser();
     const router = useRouter();
     if (user) {
