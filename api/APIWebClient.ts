@@ -1,4 +1,4 @@
-import { API_URL } from "../utils/networks";
+import { API_URL } from "../utils/urls";
 import APIClient from "./APIClient";
 
 const APIWebClient = new APIClient({

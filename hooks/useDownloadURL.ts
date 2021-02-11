@@ -3,7 +3,9 @@ import APIWebClient from "../api/APIWebClient";
 import { useMagic } from "../context/UserContext";
 import { NO_DOWLOAD } from "../utils/constants";
 
-const useDownloadURL = (slug: string): string | null => {
+const useDownloadURL = (
+    slug: string,
+): { downloadUrl: string | null; loading: boolean } => {
     const magic = useMagic();
     const [loading, setLoading] = useState<boolean>(false);
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);

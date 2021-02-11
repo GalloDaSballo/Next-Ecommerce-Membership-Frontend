@@ -5,7 +5,7 @@ import Link from "next/link";
 import APIServerClient from "../api/APIServerClient";
 import { Product, Products } from "../api/interfaces";
 import styles from "../styles/Index.module.scss";
-import { fromImageToUrl } from "../utils/networks";
+import { fromImageToUrl } from "../utils/urls";
 
 export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
     return (

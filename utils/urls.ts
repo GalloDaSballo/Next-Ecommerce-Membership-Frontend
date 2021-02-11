@@ -17,3 +17,17 @@ export const fromImageToUrl = (image) => {
 
     return image.url;
 };
+
+/**
+ * Given a image object return the proper path to display it
+ * Provides a default as well
+ * @param {string} downloadUrl
+ */
+export const fromDownloadUrlToValidURl = (downloadUrl: string) => {
+    if (downloadUrl.indexOf("/") === 0) {
+        // It's a relative url, add API URL
+        return `${API_URL}${downloadUrl}`;
+    }
+
+    return downloadUrl;
+};
