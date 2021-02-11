@@ -16,7 +16,10 @@ const useOrder = (): { order: Order | null; loading: boolean } => {
             setLoading(true);
             try {
                 const authToken = await magic.user.generateIdToken();
-                const res = await APIWebClient.unlockProduct(token, authToken);
+                const res = await APIWebClient.unlockProduct(
+                    String(token),
+                    authToken,
+                );
                 setOrder(res.data);
             } catch (err) {
                 setOrder(null);
