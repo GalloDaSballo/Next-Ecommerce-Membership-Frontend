@@ -22,6 +22,17 @@ class APIClient {
         });
     }
 
+    public fetchProductWithToken(
+        slug: string,
+        authToken: string,
+    ): Promise<AxiosResponse<Products>> {
+        return this.axios({
+            method: "GET",
+            url: `/membership-light/products?slug=${slug}`,
+            headers: { authorization: `Bearer ${authToken}` },
+        });
+    }
+
     public fetchMyProducts(
         authToken: string,
     ): Promise<AxiosResponse<Products>> {

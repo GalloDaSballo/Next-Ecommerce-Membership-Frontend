@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import APIServerClient from "../../api/APIServerClient";
 import styles from "../../styles/SingleProductPage.module.scss";
+import ProductButton from "../../components/ProductButton";
 
 import { Product } from "../../api/interfaces";
 
@@ -16,6 +17,7 @@ export const SingleProductPage: React.FC<{
         </Head>
 
         <h3>{product.name}</h3>
+        <ProductButton product={product} />
     </div>
 );
 

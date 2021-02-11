@@ -15,12 +15,14 @@ interface User {
 
 type UserContextData = {
     user: User | null;
+    magic: Magic | null;
     logout: () => void;
     login: (_email: string) => void;
 };
 
 const UserContext = createContext<UserContextData>({
     user: null,
+    magic: null,
     login: (_email) => null,
     logout: () => null,
 });
@@ -28,6 +30,7 @@ export default UserContext;
 
 export const UserContextProvider: React.FC = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
+    const [magic, setMagic] = useState<Magic | null>(null);
 
     /**
      * Logs the user out of magic
@@ -38,9 +41,8 @@ export const UserContextProvider: React.FC = ({ children }) => {
             setUser(null);
         } catch (err) {
             // Do nothing
-            setUser(user);
         }
-    }, [user]);
+    }, []);
 
     /**
      * Login with magic, enrich context with address and provider for convenience
@@ -59,7 +61,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         m = new Magic(process.env.NEXT_PUBLIC_MAGIC_KEY || "");
-
+        setMagic(m);
         /**
          * Checks if the user is already logged in, if they are, log them in automatically
          * Used in browser refreshes
@@ -75,11 +77,11 @@ export const UserContextProvider: React.FC = ({ children }) => {
                     });
                 }
             } catch (err) {
-                logout();
+                // Do nothing
             }
         };
         persistUser();
-    }, [logout]);
+    }, []);
 
     return (
         <UserContext.Provider
@@ -87,6 +89,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
                 user,
                 login,
                 logout,
+                magic,
             }}
         >
             {children}
@@ -110,4 +113,10 @@ export const useUser = () => {
     const { user } = useContext(UserContext);
 
     return user;
+};
+
+export const useMagic = () => {
+    const { magic } = useContext(UserContext);
+
+    return magic;
 };

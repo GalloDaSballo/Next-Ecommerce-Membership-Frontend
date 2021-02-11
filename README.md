@@ -1,7 +1,6 @@
-#  Next Ecommerce Membership Frontend
+# Next Ecommerce Membership Frontend
 
 The Ecommerce Membership Frontend
-
 
 ## NextJS
 
