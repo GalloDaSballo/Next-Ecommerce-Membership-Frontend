@@ -1,3 +1,5 @@
+import { Image } from "../api/interfaces";
+
 export const API_URL =
     process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 
@@ -6,7 +8,7 @@ export const API_URL =
  * Provides a default as well
  * @param {any} image
  */
-export const fromImageToUrl = (image) => {
+export const fromImageToUrl = (image: Image) => {
     if (!image) {
         return "/vercel.svg"; // Or default image here
     }

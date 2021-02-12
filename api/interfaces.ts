@@ -1,4 +1,8 @@
-/* eslint-disable camelcase */
+export interface Image {
+    url: string;
+    alternativeTitle: string;
+}
+
 export interface Product {
     id: number;
     name: string;
@@ -6,10 +10,7 @@ export interface Product {
     price: number;
     download: string;
     slug: string;
-    image: {
-        url: string;
-        alternativeTitle: string;
-    };
+    image: Image;
 }
 
 export type Products = Product[];

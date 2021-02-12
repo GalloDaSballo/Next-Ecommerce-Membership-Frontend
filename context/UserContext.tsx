@@ -6,7 +6,7 @@ import {
     useContext,
     useCallback,
 } from "react";
-import { getUserCookie, setUserCookie } from "../utils/cookies";
+import { getUserCookie, setUserCookie } from "../utils/cookieUser";
 
 let m: Magic; // Magic requires window to function
 
