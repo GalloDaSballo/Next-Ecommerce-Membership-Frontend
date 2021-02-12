@@ -38,11 +38,16 @@ const Header: React.FC = () => {
 
             <div className={styles.auth}>
                 {user ? (
-                    <Link href="/account">
-                        <a>
-                            <img src="/user_avatar.png" alt={user.email} />
-                        </a>
-                    </Link>
+                    <>
+                        <Link href="/account">
+                            <a>
+                                <img src="/user_avatar.png" alt={user.email} />
+                            </a>
+                        </Link>
+                        <Link href="/orders">
+                            <a>My orders</a>
+                        </Link>
+                    </>
                 ) : (
                     <Link href="/login">
                         <a>Log in</a>

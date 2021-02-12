@@ -33,12 +33,10 @@ class APIClient {
         });
     }
 
-    public fetchMyProducts(
-        authToken: string,
-    ): Promise<AxiosResponse<Products>> {
+    public fetchMyOrders(authToken: string): Promise<AxiosResponse<Order[]>> {
         return this.axios({
             method: "GET",
-            url: "/membership-light/products",
+            url: "/orders",
             headers: { authorization: `Bearer ${authToken}` },
         });
     }

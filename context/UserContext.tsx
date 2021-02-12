@@ -6,6 +6,7 @@ import {
     useContext,
     useCallback,
 } from "react";
+import { getUserCookie, setUserCookie } from "../utils/cookies";
 
 let m: Magic; // Magic requires window to function
 
@@ -38,6 +39,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
     const logout = useCallback(async () => {
         try {
             await m.user.logout();
+            setUserCookie(null);
             setUser(null);
         } catch (err) {
             // Do nothing
@@ -51,6 +53,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
     const login = async (email: string) => {
         try {
             await m.auth.loginWithMagicLink({ email });
+            setUserCookie(email);
             setUser({
                 email,
             });
@@ -59,9 +62,16 @@ export const UserContextProvider: React.FC = ({ children }) => {
         }
     };
 
+    /**
+     * Magic Specific
+     */
     useEffect(() => {
         m = new Magic(process.env.NEXT_PUBLIC_MAGIC_KEY || "");
         setMagic(m);
+        const cachedUserName = getUserCookie();
+        if (cachedUserName) {
+            setUser({ email: cachedUserName });
+        }
         /**
          * Checks if the user is already logged in, if they are, log them in automatically
          * Used in browser refreshes
@@ -72,12 +82,14 @@ export const UserContextProvider: React.FC = ({ children }) => {
 
                 if (isLoggedIn) {
                     const { email } = await m.user.getMetadata();
+                    setUserCookie(email);
                     setUser({
                         email: String(email),
                     });
                 }
             } catch (err) {
                 // Do nothing
+                setUser(null);
             }
         };
         persistUser();

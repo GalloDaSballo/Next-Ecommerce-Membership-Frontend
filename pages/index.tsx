@@ -32,7 +32,6 @@ export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
                 </Link>
             ))}
 
-            <p>Else show buy (Stripe Checkout flow)</p>
             <p>
                 Orders page should show list of products the user has purchased
             </p>
