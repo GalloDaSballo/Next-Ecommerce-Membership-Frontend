@@ -1,6 +1,17 @@
+@import "../../styles//mixins.scss";
+
 .header {
     padding: 25px 0;
     box-shadow: 0px 3px 6px #0000001a;
+
+    @include media-mobile-only {
+        padding: 25px 30px;
+        max-width: 100%;
+
+        .inner {
+            max-width: 100%;
+        }
+    }
 }
 
 .left {
