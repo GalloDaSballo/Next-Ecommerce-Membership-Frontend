@@ -18,7 +18,7 @@ export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
 
             <div className={styles.grid}>
                 {products.map((product: Product) => (
-                    <Link href={`/product/${product.slug}`} key={product.name}>
+                    <Link href={`/product/${product.slug}`} key={product.id}>
                         <a>
                             <div className={styles.product}>
                                 <Image

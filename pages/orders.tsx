@@ -13,7 +13,7 @@ const OrdersPage: React.FC = () => {
     return (
         <div className={styles.ordersGrid}>
             {orders?.map((order) => (
-                <div className={styles.order}>
+                <div className={styles.order} key={order.id}>
                     <img
                         alt={order?.product?.name}
                         src={fromImageToUrl(order?.product?.image)}
