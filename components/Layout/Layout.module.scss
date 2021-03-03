@@ -6,7 +6,7 @@
     margin: auto;
     padding: 40px 0;
 
-    @include media-mobile-only{
+    @include media-mobile-only {
         grid-template-columns: repeat(1, 1fr);
 
         padding: 29px;

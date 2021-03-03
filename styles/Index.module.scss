@@ -6,7 +6,7 @@
     grid-column-gap: 44px;
     grid-row-gap: 44px;
 
-    @include media-mobile-only{
+    @include media-mobile-only {
         grid-template-columns: repeat(1, 1fr);
 
         .product {

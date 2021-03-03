@@ -35,7 +35,6 @@
     font-weight: 700;
 }
 
-
 @include media-mobile-only {
     .top {
         flex-direction: column;
@@ -58,7 +57,7 @@
             margin: 14px 0;
         }
         .price {
-            margin: 14px 0; 
+            margin: 14px 0;
         }
     }
 
