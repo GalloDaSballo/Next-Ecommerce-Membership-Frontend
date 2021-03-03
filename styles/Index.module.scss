@@ -1,16 +1,14 @@
 @import "./mixins.scss";
 
-.grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 44px;
-  grid-row-gap: 44px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 44px;
+    grid-row-gap: 44px;
 }
 
 .product {
-  
-  button {
-    @include redButton();
-  }
+    button {
+        @include redButton();
+    }
 }
-
