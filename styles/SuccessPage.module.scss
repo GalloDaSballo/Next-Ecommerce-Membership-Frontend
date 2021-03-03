@@ -1,0 +1,11 @@
+@import "./mixins.scss";
+
+.container {
+  width: 302px;
+  margin: auto;
+  text-align: center;
+
+  a, button {
+    @include redButton();
+  }
+}

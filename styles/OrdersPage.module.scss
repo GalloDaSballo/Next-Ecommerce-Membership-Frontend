@@ -1,16 +1,18 @@
 @import "./mixins.scss";
 
-.grid{
+.ordersGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 44px;
   grid-row-gap: 44px;
+
+  max-width: 302px;
+  margin: auto;
+
 }
 
-.product {
-  
-  button {
+.order{
+  a, button {
     @include redButton();
   }
 }
-

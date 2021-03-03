@@ -1,11 +1,14 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import MarkdownRenderer from "react-markdown-renderer";
 import APIServerClient from "../../api/APIServerClient";
 import styles from "../../styles/SingleProductPage.module.scss";
 import ProductButton from "../../components/ProductButton";
 
 import { Product } from "../../api/interfaces";
+import { fromImageToUrl } from "../../utils/urls";
+import formatPrice from "../../utils/formatPrice";
 
 export const SingleProductPage: React.FC<{
     product: Product;
@@ -15,9 +18,24 @@ export const SingleProductPage: React.FC<{
             <title>Entreprenerd Store</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
-
-        <h3>{product.name}</h3>
-        <ProductButton product={product} />
+        <div className={styles.top}>
+            <div className={styles.left}>
+                <Image
+                    layout="responsive"
+                    width={500}
+                    height={283}
+                    src={fromImageToUrl(product.image)}
+                />
+            </div>
+            <div className={styles.right}>
+                <h3>{product.name}</h3>
+                <p className={styles.price}>{formatPrice(product.price)}</p>
+                <ProductButton product={product} />
+            </div>
+        </div>
+        <div className={styles.content}>
+            <MarkdownRenderer markdown={product.description} />
+        </div>
     </div>
 );
 

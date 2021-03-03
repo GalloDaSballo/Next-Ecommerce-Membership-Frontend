@@ -1,5 +1,7 @@
 import DownloadLink from "../components/DownloadLink";
 import useOrders from "../hooks/useOrders";
+import styles from "../styles/OrdersPage.module.scss";
+import { fromImageToUrl } from "../utils/urls";
 
 const OrdersPage: React.FC = () => {
     const { orders, loading } = useOrders();
@@ -9,11 +11,15 @@ const OrdersPage: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className={styles.ordersGrid}>
             {orders?.map((order) => (
-                <div>
-                    <h3>{order.product.name}</h3>
-                    <DownloadLink downloadUrl={order.product.download} />
+                <div className={styles.order}>
+                    <img
+                        alt={order?.product?.name}
+                        src={fromImageToUrl(order?.product?.image)}
+                    />
+                    <h3>{order?.product?.name}</h3>
+                    <DownloadLink downloadUrl={order?.product?.download} />
                 </div>
             ))}
         </div>

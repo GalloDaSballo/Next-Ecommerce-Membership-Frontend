@@ -6,6 +6,7 @@ import APIServerClient from "../api/APIServerClient";
 import { Product, Products } from "../api/interfaces";
 import styles from "../styles/Index.module.scss";
 import { fromImageToUrl } from "../utils/urls";
+import formatPrice from "../utils/formatPrice";
 
 export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
     return (
@@ -15,26 +16,25 @@ export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <h2>Purchase Products here</h2>
-            {products.map((product: Product) => (
-                <Link href={`/product/${product.slug}`} key={product.name}>
-                    <a>
-                        <h2>
-                            <Image
-                                layout="responsive"
-                                width={500}
-                                height={283}
-                                src={fromImageToUrl(product.image)}
-                            />
-                            {product.name}
-                        </h2>
-                    </a>
-                </Link>
-            ))}
-
-            <p>
-                Orders page should show list of products the user has purchased
-            </p>
+            <div className={styles.grid}>
+                {products.map((product: Product) => (
+                    <Link href={`/product/${product.slug}`} key={product.name}>
+                        <a>
+                            <div className={styles.product}>
+                                <Image
+                                    layout="responsive"
+                                    width={500}
+                                    height={283}
+                                    src={fromImageToUrl(product.image)}
+                                />
+                                <h2>{product.name}</h2>
+                                <p>{formatPrice(product.price)}</p>
+                                <button>More Info</button>
+                            </div>
+                        </a>
+                    </Link>
+                ))}
+            </div>
         </div>
     );
 };

@@ -6,13 +6,11 @@ import CookieConsent from "react-cookie-consent";
 import { initGA, logPageView } from "../utils/ga";
 import * as fbq from "../utils/fb";
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { UserContextProvider } from "../context/UserContext";
 
 import "../styles/global.scss";
 import { COOKIE_CONSENT } from "../utils/cookieConsent";
-
+import Layout from "../components/Layout";
 /**
  * All tracking stuff on page change
  */
@@ -53,12 +51,16 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
     return (
         <UserContextProvider>
-            <Header />
-            <Component {...pageProps} />
-            <CookieConsent cookieName={COOKIE_CONSENT} onAccept={initTracking}>
-                This website uses cookies to enhance the user experience.
-            </CookieConsent>
-            <Footer />
+            <Layout>
+                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                <Component {...pageProps} />
+                <CookieConsent
+                    cookieName={COOKIE_CONSENT}
+                    onAccept={initTracking}
+                >
+                    This website uses cookies to enhance the user experience.
+                </CookieConsent>
+            </Layout>
         </UserContextProvider>
     );
 };

@@ -23,7 +23,11 @@ const ProductButton: React.FC<{ product: Product }> = ({ product }) => {
         return null;
     }
     if (downloadUrl) {
-        return <DownloadLink downloadUrl={downloadUrl} />;
+        return (
+            <DownloadLink
+                downloadUrl={fromDownloadUrlToValidURl(downloadUrl)}
+            />
+        );
     }
     return <button onClick={handleClick}>Buy it</button>;
 };

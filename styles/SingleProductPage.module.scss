@@ -1,8 +1,30 @@
+@import "./mixins.scss";
+
 .container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
+    max-width: 917px;
+    margin: auto;
+}
+
+.top {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+
+.left, .right {
+    flex: 1;
+
+    a, button {
+        @include redButton();
+    }
+}
+
+.left{
+    flex: 2;
+    max-width: 100vw;
+    width: 580px;
+    margin-right: 47px;;
+}
+
+.price {
+    font-size: 31px;
+    font-weight: 700;
 }
