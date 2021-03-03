@@ -3,6 +3,10 @@
 .container {
     max-width: 917px;
     margin: auto;
+
+    img {
+        border-radius: 9px;
+    }
 }
 
 .top {
@@ -29,4 +33,36 @@
 .price {
     font-size: 31px;
     font-weight: 700;
+}
+
+
+@include media-mobile-only {
+    .top {
+        flex-direction: column;
+    }
+
+    .left {
+        width: unset;
+        margin-right: 0;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .right {
+        h3 {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 26px;
+            margin: 14px 0;
+        }
+        .price {
+            margin: 14px 0; 
+        }
+    }
+
+    .content {
+        font-size: 14px;
+    }
 }
