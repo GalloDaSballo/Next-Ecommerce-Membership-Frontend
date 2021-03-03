@@ -5,6 +5,20 @@
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 44px;
     grid-row-gap: 44px;
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 26px;
+        margin: 14px 0;
+    }
+
+    p {
+        font-size: 31px;
+        font-weight: bold;
+        line-height: 47px;
+        margin: 14px 0;
+    }
 }
 
 .product {
