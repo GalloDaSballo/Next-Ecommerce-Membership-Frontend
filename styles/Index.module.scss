@@ -5,12 +5,25 @@
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 44px;
     grid-row-gap: 44px;
+}
+
+.product {
+    border-radius: 9px;
+
+    img {
+        border-radius: 9px 9px 0 0;
+    }
+}
+
+.productContent {
+    background: #fff;
+    padding: 42px 32px 53px;
 
     h2 {
         font-size: 18px;
         font-weight: bold;
         line-height: 26px;
-        margin: 14px 0;
+        margin: 0 0 14px;
     }
 
     p {
@@ -19,9 +32,7 @@
         line-height: 47px;
         margin: 14px 0;
     }
-}
 
-.product {
     button {
         @include redButton();
     }

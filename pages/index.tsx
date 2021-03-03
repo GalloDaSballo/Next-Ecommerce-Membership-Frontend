@@ -27,9 +27,11 @@ export const HomePage: React.FC<{ products: Products }> = ({ products }) => {
                                     height={283}
                                     src={fromImageToUrl(product.image)}
                                 />
-                                <h2>{product.name}</h2>
-                                <p>{formatPrice(product.price)}</p>
-                                <button>More Info</button>
+                                <div className={styles.productContent}>
+                                    <h2>{product.name}</h2>
+                                    <p>{formatPrice(product.price)}</p>
+                                    <button>More Info</button>
+                                </div>
                             </div>
                         </a>
                     </Link>
